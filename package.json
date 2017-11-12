@@ -1,0 +1,28 @@
+{
+  "name": "blog-html",
+  "version": "1.0.0",
+  "description": "个人博客静态页面",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaga-change/blog-html.git"
+  },
+  "author": "严俊东",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaga-change/blog-html/issues"
+  },
+  "homepage": "https://github.com/gaga-change/blog-html#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "less-plugin-autoprefix": "^1.5.1"
+  }
+}
