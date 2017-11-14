@@ -16,8 +16,7 @@
     "url": "https://github.com/gaga-change/blog-html/issues"
   },
   "homepage": "https://github.com/gaga-change/blog-html#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-less": "^3.3.2",

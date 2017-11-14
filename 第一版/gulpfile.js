@@ -8,11 +8,12 @@ var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] })
 
 var dir = {
   less: ['./less/**/*.less'],
+  lessMain: ['./less/main.less'],
   output: './css'
 }
 
 gulp.task('less', function () {
-  return gulp.src(dir.less)
+  return gulp.src(dir.lessMain)
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(less({
@@ -23,6 +24,6 @@ gulp.task('less', function () {
     .pipe(gulp.dest(dir.output))
 })
 
-gulp.task('watch', function() {
+gulp.task('watch', ['less'], function() {
   gulp.watch(dir.less, ['less'])
 })
