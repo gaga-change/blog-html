@@ -9,7 +9,8 @@ var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] })
 var dir = {
   bootstrap: ['./less/bootstrap/**/*.less'],
   bootstrapMain: ['./less/bootstrap/base.less'],
-  less: ['./less/style/**/*.less', './less/main.less'],
+  less: ['./less/*.less'],
+  lessMain: ['./less/main.less'],
   output: './css'
 }
 
@@ -27,7 +28,7 @@ gulp.task('bootstrap', function () {
 
 
 gulp.task('less', function () {
-  return gulp.src(dir.less)
+  return gulp.src(dir.lessMain)
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(less({

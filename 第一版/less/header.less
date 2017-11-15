@@ -1,0 +1,50 @@
+// 导航样式
+
+// 菜单
+.all-menu {
+  &>div {
+    background-color: @white-base;
+    .border-bottom();
+    .border-shadow();
+    z-index: 100;
+  }
+  // logo
+  .logo {
+    a {
+      display: block;
+      height: 60px;
+      width: 200px;
+      background: url('../image/logo-40.png') no-repeat -5px center;
+      //background-size: contain;
+      background-color: @active-color;
+    }
+  }
+  // 导航栏
+  .menu {
+    nav {
+      float: left;
+      @media (min-width: @screen-sm-min) {
+        float: right;
+      }
+      @media (min-width: @screen-md-min) {
+      }
+    }
+    a {
+      display: block;
+      float: left;
+      padding: 0 8px;
+      margin: 0 5px;
+      line-height: 60px;
+      font-size: 18px;
+      color: @text-color;
+      &.active {
+        color: @active-color;
+      }
+    }
+  }
+  // fixed 补丁
+  .padding {
+    height: 60px;
+    width: 100%;
+  }
+}
