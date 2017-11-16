@@ -2,11 +2,30 @@
 // 内容区
 .content {
   margin-top: 20px;
+  @media (max-width: @screen-xs-max) {
+    &.mobile {
+      .content-right {
+        display: block;
+      }
+    }
+    .content-right {
+      display: none;
+      position: fixed;
+      top: 60px;
+      bottom: 0;
+      right: 0;
+      width: 88%;
+      background-color: @body-bg;
+      overflow-y: scroll;
+      z-index: 20;
+    }
+  }
 }
 
 // 列表区
 .content-left {
   background-color: @white-base;
+  // 侧边栏背景，通过此div实现
   .bg {
     position: absolute;
     background-color: @body-bg-light;
@@ -215,4 +234,15 @@
       .transition(all .3s ease)
     }
   }
+}
+
+// 幕布
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.67);
 }

@@ -5,9 +5,9 @@
     <title>Title</title>
     <meta id="viewport" name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/jquery.js"></script>
 </head>
 <body>
 <div class="all-menu">
@@ -26,7 +26,7 @@
                     </nav>
                 </div>
                 <div class="col-xs-2 visible-xs-block">
-                    <div class="switch"></div>
+                    <div class="switch" id="switch"></div>
                 </div>
             </header>
         </div>
@@ -34,7 +34,7 @@
     <div class="padding"></div>
 </div>
 <!-- 首页内容区 -->
-<div class="content">
+<div class="content" id="content">
     <div class="container">
         <div class="row">
             <!-- 左侧列表 -->
@@ -309,5 +309,23 @@
 <footer>
 
 </footer>
+<!-- 幕布 -->
+<div class="mask" id="mask" style="display: none"></div>
+<script type="text/javascript">
+    var switchEle = $('#switch')
+    switchEle.click(function () {
+      if ($('#content').hasClass('mobile')) {
+        $('#content').removeClass('mobile')
+        $('#mask').hide()
+      } else {
+        $('#content').addClass('mobile')
+        $('#mask').show()
+      }
+    })
+    $('#mask').click(function () {
+      $('#mask').hide()
+      $('#content').removeClass('mobile')
+    })
+</script>
 </body>
 </html>
