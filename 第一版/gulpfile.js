@@ -1,10 +1,10 @@
 var gulp = require('gulp')
 var less = require('gulp-less')
 var path = require('path')
-var LessAutoprefix = require('less-plugin-autoprefix')
+// var LessAutoprefix = require('less-plugin-autoprefix')
 var sourcemaps = require('gulp-sourcemaps')
 var plumber = require('gulp-plumber');
-var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] })
+// var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] })
 
 var dir = {
   bootstrap: ['./less/bootstrap/**/*.less'],
@@ -20,7 +20,7 @@ gulp.task('bootstrap', function () {
   .pipe(sourcemaps.init())
   .pipe(less({
     paths: [ path.join(__dirname, 'less', 'includes') ],
-    plugins: [autoprefix]
+    // plugins: [autoprefix]
   }))
   .pipe(sourcemaps.write('./maps'))
   .pipe(gulp.dest(dir.output))
@@ -33,7 +33,7 @@ gulp.task('less', function () {
     .pipe(sourcemaps.init())
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ],
-      plugins: [autoprefix]
+      // plugins: [autoprefix]
     }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dir.output))

@@ -205,7 +205,7 @@ h2.title_tj p { background: #fff; width: 90px }
 .dateview span { margin: 0 10px; }
 .dateview span a { color: #099B43; }
 a.readmore { background: #fd8a61; color: #fff; padding: 5px 10px; float: right; margin: 20px 0 0 0 }
-.weather { background: url(../images/weather_bg.jpg) no-repeat; height: 88px; margin: 20px 0;padding: 20px 0 0 75px; }
+.weather { background: url(../image/weather_bg.jpg) no-repeat; height: 88px; margin: 20px 0;padding: 20px 0 0 75px; }
 .news h3 { font-size: 14px; background: url(../images/r_title_bg.jpg) repeat-x center }
 .news h3 p { background: #fff; width: 70px }
 .news h3 span { color: #65b020 }
