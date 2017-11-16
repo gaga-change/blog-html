@@ -7,6 +7,17 @@
 // 列表区
 .content-left {
   background-color: @white-base;
+  .bg {
+    position: absolute;
+    background-color: @body-bg-light;
+    width: 133.333334%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    .border-shadow();
+    box-sizing: content-box;
+  }
   // banner
   .banner {
     height: 150px;
@@ -133,5 +144,18 @@
 
 // 筛选项
 .content-right {
-
+  // 天气
+  .weather {
+    background: none;
+    height: 60px;
+    margin-top: 15px;
+    @media (min-width: @screen-md-min) {
+    }
+    @media (min-width: @screen-lg-min) {
+      height: 88px;
+      padding: 20px 0 0 77px;
+      background: url("../images/weather_bg.jpg") center no-repeat;
+      background-size: contain;
+    }
+  }
 }
