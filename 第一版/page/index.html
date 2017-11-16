@@ -16,13 +16,13 @@
             <!-- 头部 -->
             <header class="row">
                 <div class="col-sm-4 logo hidden-xs">
-                    <a href="index.html"></a>
+                    <a href="#/home"></a>
                 </div>
                 <div class="col-xs-10 col-sm-8 menu">
                     <nav class="clearfix">
-                        <a class="active" href="index.html"><span>首页</span></a>
-                        <a href="index.html"><span>关于我</span></a>
-                        <a href="index.html"><span>留言板</span></a>
+                        <a href="#/home" data-route="/home"><span>首页</span></a>
+                        <a href="#/about" data-route="/about"><span>关于我</span></a>
+                        <a href="#/message" data-route="/message"><span>留言板</span></a>
                     </nav>
                 </div>
                 <div class="col-xs-2 visible-xs-block">
@@ -34,14 +34,15 @@
     <div class="padding"></div>
 </div>
 <!-- 首页内容区 -->
-<div class="content" id="content">
+<div class="content" style="display: none" id="content">
     <div class="container">
         <div class="row">
             <!-- 左侧列表 -->
-            <div class="col-xs-12 col-sm-9 content-left">
+            <div class="col-xs-12 col-sm-9 content-left" id="contentLeftList">
                 <div class="bg hidden-xs"></div>
                 <div class="banner"></div>
-                <h4 class="title"><span>最新文章</span></h4>
+                <h4 class="title" id="allList"><span>最新文章</span></h4>
+                <h4 class="title" id="classList"><span>目录分类：<strong>[css]</strong></span></h4>
                 <ul class="list-unstyled">
                     <li class="item row">
                         <h4 class="col-xs-12">程序员请放下你的技术情节，与你的同伴一起进步</h4>
@@ -50,7 +51,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -72,7 +73,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -94,7 +95,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -116,7 +117,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -138,7 +139,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -160,7 +161,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -182,7 +183,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -204,7 +205,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -226,7 +227,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -248,7 +249,7 @@
                             <div class="right clearfix">
                                 <p class="describe">如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话，
                                     那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-                                <div class="enter"><a href="/">阅读全文<span class="hidden-xs">>></span></a></div>
+                                <div class="enter"><a href="#/detail/001">阅读全文<span class="hidden-xs">>></span></a></div>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -265,8 +266,12 @@
                     </li>
                 </ul>
             </div>
+            <!-- 左侧分类列表 -->
+            <div class="col-xs-12 col-sm-9 content-left" id="contentLeftDetail">
+                详情
+            </div>
             <!-- 右侧筛选 -->
-            <div class="col-xs-12 col-sm-3 content-right">
+            <div class="col-xs-12 col-sm-3 content-right" id="contentRight">
                 <div class="weather">
                     <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true"
                             src="http://i.tianqi.com/index.php?c=code&amp;id=12&amp;icon=1&amp;num=1"></iframe>
@@ -274,11 +279,11 @@
                 <div class="classes">
                     <h3 class="title">文章<span style="color: #65b020">标签</span></h3>
                     <ul>
-                        <li><a href="#">CSS <span>(33)</span></a></li>
-                        <li><a href="#">JavaScript <span>(22)</span></a></li>
-                        <li><a href="#">NodeJS <span>(11)</span></a></li>
-                        <li><a href="#">Webpack <span>(10)</span></a></li>
-                        <li><a href="#">Git <span>(3)</span></a></li>
+                        <li><a href="#/class/css">CSS <span>(33)</span></a></li>
+                        <li><a href="#/class/javascript">JavaScript <span>(22)</span></a></li>
+                        <li><a href="#/class/nodejs">NodeJS <span>(11)</span></a></li>
+                        <li><a href="#/class/webpack">Webpack <span>(10)</span></a></li>
+                        <li><a href="#/class/git">Git <span>(3)</span></a></li>
                     </ul>
                 </div>
                 <div class="blog">
@@ -303,6 +308,18 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<!-- 关于我页面&留言板 -->
+<div class="about" style="display: none" id="other">
+    <div id="about">
+        个人描述
+    </div>
+    <div id="message">
+        留言区
+    </div>
+    <div>
+        个人信息
     </div>
 </div>
 <!-- 页脚 -->
@@ -353,9 +370,11 @@
         } else {
           $(window).scrollTop($(window).scrollTop() - step)
         }
-        console.log($(window).scrollTop())
       }, 10)
     })
 </script>
+<script src="../js/common.js"></script>
+<script src="../js/page.js"></script>
+<script src="../js/main.js"></script>
 </body>
 </html>
