@@ -5,6 +5,7 @@
   // ############################### 变量初始 ###############################
   var page = window.page
   var common = window.common
+  window.routerLog = false
 
   // ############################### 页面初始 ###############################
   $(function () {
@@ -34,8 +35,10 @@
         $(item.showEle).show()
         $(item.hideEle).hide()
         $("[data-route='" + item.active + "']").addClass('active')
-        console.log('from', page.last)
-        console.log('to', item)
+        if (routerLog) {
+          console.log('from', page.last)
+          console.log('to', item)
+        }
         page.last = item
       }
     }

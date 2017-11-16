@@ -163,6 +163,18 @@
 
 // 筛选项
 .content-right {
+  background-color: @body-bg-light;
+  .bg {
+    position: absolute;
+    background-color: @white-base;
+    width: 400%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    .border-shadow();
+    box-sizing: content-box;
+  }
   // 天气
   .weather {
     display: none;
