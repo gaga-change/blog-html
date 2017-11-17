@@ -44,5 +44,6 @@
       active: '/message'
     }
   ]
+  page.defaultPath = '/home'
   page.last = null
 }($))

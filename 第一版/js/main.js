@@ -18,9 +18,8 @@
     _fun()
     window.onhashchange = _fun
     function _fun() {
-      var href = location.href
-      if (href.indexOf('#') === -1) return
-      var path = href.split('#')[1]
+      var path = location.href.split('#')[1]
+      if (!path) path = page.defaultPath
       var item = page.config.filter(function (item) {
         return path.indexOf(item.path) !== -1
       })[0]
