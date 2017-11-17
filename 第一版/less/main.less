@@ -1,6 +1,7 @@
 // Variable
 @import "bootstrap/variables";
 @import "./bootstrap/mixins/vendor-prefixes";
+@import "./bootstrap/mixins/clearfix";
 
 @border-color: rgba(160, 160, 160, .3);
 @active-color: #e15782;
@@ -19,9 +20,11 @@
 }
 
 // Core main
-@import "markdown";
-@import "header";
-@import "content";
+@import "markdown"; // Markdown 常规样式
+@import "header"; // 头部导航
+@import "content"; // 主页主体结构
+@import "list"; // 主页-列表样式
+@import "detail"; // 主页-详情样式
 
 @media (min-width: @screen-sm-min) {
 }

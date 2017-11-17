@@ -38,7 +38,7 @@
     <div class="container">
         <div class="row">
             <!-- 左侧列表 -->
-            <div class="col-xs-12 col-sm-9 content-left" id="contentLeftList">
+            <div class="col-xs-12 col-sm-9 content-left content-list" id="contentLeftList">
                 <div class="bg hidden-xs"></div>
                 <div class="banner"></div>
                 <h4 class="title" id="allList"><span>最新文章</span></h4>
@@ -277,7 +277,24 @@
                 </ul>
             </div>
             <!-- 左侧详情 -->
-            <div class="col-xs-12 col-sm-9 content-left" id="contentLeftDetail">
+            <div class="col-xs-12 col-sm-9 content-left content-detail" id="contentLeftDetail">
+                <div class="top">
+                    <h1 class="title">一级标题</h1>
+                    <p class="msg">
+                        <span class="time">发表于 <span>2015-02-24</span></span>
+                        <span class="tab">标签:
+                            <a href="#/class/css">CSS</a>
+                            <a href="#/class/javascript">JavaScript</a>
+                        </span>
+                        <span class="read">阅读(<span>99999</span>)</span>
+                        <span class="comment">评论(<a href="JavaScript:void(0)">249</a>)</span>
+                    </p>
+                </div>
+                <div class="intro">
+                    <h3 class="title">简介</h3>
+                    <p>
+                        瞬间心一紧惨了不会是很难吧？现在的小学题可难了。。。敢紧打开计算器，非常淡定回她：“可以啊，你说吧。”儿子：“8万乘9万是多少呀？”这简直在侮辱我的智商，我脱口而出八九七十二，七十二万啊！今天我看作业本上画了个大大的叉。。。</p>
+                </div>
                 <div class="markdown">
                     <h2>1. 二级标题</h2>
                     <p>1.1 第一点</p>
@@ -295,6 +312,18 @@ function start() {
                     <p>2.3 代码块</p>
                     <p><code>123</code></p>
                     <p></p>
+                </div>
+                <div class="relation">
+                    <h3 class="title"><span>相关文章</span></h3>
+                    <ul>
+                        <li><a href="#/detail/002">程序员请放下你的技术情节，与你的同伴一起进步</a></li>
+                        <li><a href="#/detail/002">程序员请放下你的技术情节，与你的同伴一起进步</a></li>
+                        <li><a href="#/detail/002">程序员请放下你的技术情节，与你的同伴一起进步</a></li>
+                        <li><a href="#/detail/002">程序员请放下你的技术情节，与你的同伴一起进步</a></li>
+                        <li><a href="#/detail/002">程序员请放下你的技术情节，与你的同伴一起进步</a></li>
+                        <li><a href="#/detail/002">程序员请放下你的技术情节，与你的同伴一起进步</a></li>
+                        <li><a href="#/detail/002">程序员请放下你的技术情节，与你的同伴一起进步</a></li>
+                    </ul>
                 </div>
             </div>
             <!-- 右侧筛选 -->
@@ -339,7 +368,7 @@ function start() {
     </div>
 </div>
 <!-- 关于我页面&留言板 -->
-<div class="about" style="display: none" id="other">
+<div class="other" style="display: none" id="other">
     <div id="about">
         个人描述
     </div>
