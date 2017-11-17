@@ -7,6 +7,7 @@
 @active-color: #e15782;
 @active-color-light: lighten(@active-color, 7.5%);
 
+// Mixins
 .border-bottom() {
   border-bottom: 1px solid @border-color;
 }
@@ -17,6 +18,10 @@
 
 .border-shadow() {
   box-shadow: 0 1px 3px rgba(0, 0, 0, .03);
+}
+// 全局样式
+.content-detail, .page-other {
+  font-family: "微软雅黑", Arial, Helvetica, sans-serif;
 }
 
 // Core main
