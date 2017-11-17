@@ -18,6 +18,7 @@
     _fun()
     window.onhashchange = _fun
     function _fun() {
+      $(window).scrollTop(0)
       var path = location.href.split('#')[1]
       if (!path) path = page.defaultPath
       var item = page.config.filter(function (item) {
