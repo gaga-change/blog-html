@@ -1,0 +1,144 @@
+@import "bootstrap/variables";
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fff;
+}
+
+// 登入页 样式
+.page-login {
+  max-width: 330px;
+  padding: 15px;
+  .title {
+    text-align: center;
+  }
+  input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    &.username {
+      border-bottom: none;
+    }
+  }
+  button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+  }
+}
+
+// 头部
+.home-header {
+  background-color: #101010;
+  height: 50px;
+  width: 100%;
+  z-index: 100;
+  .title {
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
+    color: #9d9d9d;
+  }
+  .switch {
+    height: 50px;
+    width: 50px;
+    float: right;
+    background: url("../image/switch.png") no-repeat center;
+  }
+}
+
+// 手机屏幕
+.content {
+  @media (max-width: @screen-xs-max) {
+    &.mobile {
+      .home-menu {
+        display: block;
+      }
+    }
+    // 主页的右侧栏位处理
+    .home-menu {
+      display: none;
+      right: 0;
+      width: 40%;
+    }
+  }
+}
+
+// 左侧菜单
+.home-menu {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  z-index: 80;
+  padding: 20px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
+  @media (min-width: @screen-sm-min) {
+    left: 0;
+  }
+  a {
+    display: block;
+    padding: 10px 20px;
+    color: #337ab7;
+    text-decoration: none;
+    &:hover {
+      background-color: #eee;
+    }
+    &.active {
+      background-color: #337ab7;
+      color: #fff;
+    }
+  }
+}
+
+// 右侧内容区
+.home-content {
+  @media (min-width: @screen-sm-min) {
+    padding: 20px 40px;
+  }
+  .table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+  }
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  tbody>tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  th {
+    text-align: left;
+  }
+  tr:first-child>th, tr:first-child>td {
+    border-top: 0;
+  }
+  tr>th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+  }
+  tr>th, tr>td {
+    padding: 8px;
+    line-height: 1.2;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+  }
+}
+
+// 幕布
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.67);
+}

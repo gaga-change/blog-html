@@ -10,7 +10,7 @@ var dir = {
   bootstrap: ['./less/bootstrap/**/*.less'],
   bootstrapMain: ['./less/bootstrap/base.less'],
   less: ['./less/*.less'],
-  lessMain: ['./less/main.less'],
+  lessMain: ['./less/main.less', './less/dashboard.less'],
   output: './css'
 }
 
