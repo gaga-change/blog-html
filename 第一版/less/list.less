@@ -122,4 +122,28 @@
       }
     }
   }
+  // 分页按钮样式
+  .paging {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    text-align: center;
+    li {
+      //float: left;
+      display: inline-block;
+    }
+    a {
+      font-size: 12px;
+      display: inline-block;
+      padding: 3px 8px;
+      margin: auto 3px;
+      color: @gray-light;
+      border: 1px solid @border-color;
+      text-decoration: none;
+      &:hover, &.active {
+        border: 1px solid @active-color;
+        background: @active-color;
+        color: @white-base;
+      }
+    }
+  }
 }
