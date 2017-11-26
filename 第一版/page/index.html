@@ -211,7 +211,7 @@
                     <ul class="list-unstyled clearfix">
                         <li><a href="#/home">上一页</a></li>
                         <li><a href="#/home">1</a></li>
-                        <li><a href="#/home">2</a></li>
+                        <li><a class="active" href="#/home">2</a></li>
                         <li><a href="#/home">3</a></li>
                         <li><a href="#/home">下一页</a></li>
                     </ul>
@@ -353,8 +353,46 @@ function start() {
     </div>
 </div>
 <!-- 页脚 -->
-<footer>
-
+<footer class="page-footer">
+    <!--友情链接 用到的技术 赞助商-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="widget link">
+                    <h4 class="title">博客版本</h4>
+                    <ul class="list-unstyled">
+                        <li><a class="active" href="#">VUE(SSR)版</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="widget box">
+                    <h4 class="title">运用到的技术</h4>
+                    <ul class="list-unstyled clearfix">
+                        <li><a href="https://cn.vuejs.org/" target="_blank">Vue</a></li>
+                        <li><a href="http://lesscss.cn/" target="_blank">Less</a></li>
+                        <li><a href="https://zh.nuxtjs.org/" target="_blank">Nuxt</a></li>
+                        <li><a href="http://www.gulpjs.com.cn/" target="_blank">Gulp</a></li>
+                        <li><a href="https://doc.webpack-china.org/" target="_blank">Webpack</a></li>
+                        <li><a href="http://nodejs.cn/" target="_blank">NodeJS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="widget friend">
+                    <h4 class="title">友情链接</h4>
+                    <ul class="list-unstyled clearfix">
+                        <li><a href="http://www.yangqq.com/">杨青个人博客</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--备案号-->
+    <div class="record text-center">
+        <span>Copyright © <a href="#">喜欢JS的无名小站</a> </span> |
+        <span> <a href="http://www.miibeian.gov.cn/">浙ICP备17054210号</a></span>
+    </div>
 </footer>
 <!-- 幕布 -->
 <div class="mask" id="mask" style="display: none"></div>
