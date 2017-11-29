@@ -43,6 +43,6 @@ gulp.task('watchBootstrap', ['bootstrap'], function() {
   gulp.watch(dir.bootstrap, ['less'])
 })
 
-gulp.task('watch', ['less'], function() {
+gulp.task('watch', ['bootstrap', 'less'], function() {
   gulp.watch(dir.less, ['less'])
 })
