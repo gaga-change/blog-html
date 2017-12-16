@@ -16,8 +16,9 @@
                 }
             }
         }
-    } 
-    .component { // 评论组件
+    }
+    .component {
+        // 评论组件
         .clearfix();
         position: relative; // 左侧头像
         .head {
@@ -131,19 +132,21 @@
                 }
             }
         }
-    } 
+    }
 }
 
-.emoji-box { // emoji-box
+// 表情
+.emoji-box {
+    // emoji-box
     display: block;
     position: absolute;
     font-size: 12px;
-    font-family: Microsoft YaHei,Arial,Helvetica,sans-serif;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
     color: #222;
     overflow: visible;
     background: #fff;
     border: 1px solid #ccd0d7;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.14);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .14);
     margin-top: 7px;
     margin-bottom: 10px;
     border-radius: 4px;
@@ -197,5 +200,81 @@
             }
         }
     }
+}
 
+// 登入按钮
+.page-login {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, .3);
+    z-index: 99998;
+    .con {
+        width: 100%;
+        max-width: 520px;
+        background: #fff; 
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -160px / 2;
+        margin-left: -520px / 2;
+        text-align: center;
+        padding: 30px 118px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+        border-radius: 4px;
+        @media (max-width: 520px) {
+            padding-left: 10px;
+            padding-right: 10px;
+            left: 0;
+            margin-left: 0;
+        }
+        .with-line {
+            font-size: 16px;
+            color: #999;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+            &:before {
+                content: "";
+                border-top: 1px solid #ededed;
+                display: block;
+                position: absolute;
+                width: 50px;
+                top: 8px;
+                left: 0;
+            }
+            &:after {
+                content: "";
+                border-top: 1px solid #ededed;
+                display: block;
+                position: absolute;
+                width: 50px;
+                top: 8px;
+                right: 0;
+            }
+        }
+    }
+    .list {
+        text-align: center;
+        margin-top: 15px;
+        a {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            margin: 10px;
+        }
+        .github {
+            background: url('../image/github.png') no-repeat;
+            &:hover {
+                background: url('../image/github-hov.png') no-repeat;
+            }
+        }
+        .qzone {
+            background: url('../image/qq.png') no-repeat;
+            &:hover {
+                background: url('../image/qq-hov.png') no-repeat;
+            }
+        }
+    }
 }
