@@ -284,19 +284,44 @@
 .page-comments {
     font-family: "Microsoft YaHei,Arial,Helvetica,sans-serif";
     font-size: 12px;
+    padding-top: 10px;
+    margin-top: 20px;
+    border-top: 1px solid #e5e9ef;
     ul {
         padding: 0;
         li {
             list-style: none;
         }
     }
-    .item-fa {
+    .item {
         position: relative;
         padding-left: 48px + 38px; // 图片宽度 + 右侧补丁
+        padding-top: 10px;
+        padding-bottom: 10px;
+        .con {
+            border-bottom: 1px solid #e5e9ef;
+        }
+        &.son {
+            padding-left: 24px + 18px; // 图片宽度 + 右侧补丁
+            .user-img {
+                position: absolute;
+                left: 0;
+                top: 15px;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+            }
+            .username, .text {
+                display: inline;
+            }
+            .username {
+                padding-right: 10px;
+            }
+        }
         .user-img {
             position: absolute;
             left: 0;
-            top: 0;
+            top: 20px;
             width: 48px;
             height: 48px;
             border-radius: 50%;
