@@ -13,12 +13,105 @@
 <body>
   <div class="container">
     <div class="row clearfix">
-      <div class="col-md-8 column">
+      <div class="col-md-8 column" style=" padding-top:40px;">
+        <!-- 评论 -->
+        <div class="page-comment">
+          <!-- 输入框全套 -->
+          <div class="component">
+            <!-- 左侧头像 -->
+            <div class="head">
+              <img src="../image/001.png" alt="">
+              <div class="default">
+                <span>登入</span>
+              </div>
+            </div>
+            <!-- 右侧输入组件 -->
+            <div class="right">
+              <div class="send">
+                <!-- 文本框 -->
+                <textarea placeholder="有事没事说两句..."></textarea>
+                <!-- 提交按钮 -->
+                <button>发表评论</button>
+              </div>
+              <div class="bottom">
+                <!-- 显示表情按钮 -->
+                <div class="comment-emoji" id="triggerEmoji">
+                  <i class="face"></i>
+                  <span class="text">表情</span>
+                  <!-- 表情列表 -->
+                  <div class="emoji-box">
+                    <div class="emoji-title">
+                      <span>颜文字</span>
+                    </div>
+                    <div class="emoji-wrap">
+                      <a class="emoji-list emoji-text" data-emoji-text="(⌒▽⌒)">(⌒▽⌒)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="（￣▽￣）">（￣▽￣）</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(=・ω・=)">(=・ω・=)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(｀・ω・´)">(｀・ω・´)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(〜￣△￣)〜">(〜￣△￣)〜</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(･∀･)">(･∀･)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(°∀°)ﾉ">(°∀°)ﾉ</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(￣3￣)">(￣3￣)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="╮(￣▽￣)╭">╮(￣▽￣)╭</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="( ´_ゝ｀)">( ´_ゝ｀)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="←_←">←_←</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="→_→">→_→</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(<_<)">(&lt;_&lt;)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(>_>)">(&gt;_&gt;)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(;¬_¬)">(;¬_¬)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(&quot;▔□▔)/">("▔□▔)/</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(ﾟДﾟ≡ﾟдﾟ)!?">(ﾟДﾟ≡ﾟдﾟ)!?</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="Σ(ﾟдﾟ;)">Σ(ﾟдﾟ;)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="Σ( ￣□￣||)">Σ( ￣□￣||)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(´；ω；`)">(´；ω；`)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="（/TДT)/">（/TДT)/</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(^・ω・^ )">(^・ω・^ )</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(｡･ω･｡)">(｡･ω･｡)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(●￣(ｴ)￣●)">(●￣(ｴ)￣●)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="ε=ε=(ノ≧∇≦)ノ">ε=ε=(ノ≧∇≦)ノ</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(´･_･`)">(´･_･`)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(-_-#)">(-_-#)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="（￣へ￣）">（￣へ￣）</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(￣ε(#￣) Σ">(￣ε(#￣) Σ</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="ヽ(`Д´)ﾉ">ヽ(`Д´)ﾉ</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(╯°口°)╯(┴—┴">(╯°口°)╯(┴—┴</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="（#-_-)┯━┯">（#-_-)┯━┯</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="_(:3」∠)_">_(:3」∠)_</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(笑)">(笑)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(汗)">(汗)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(泣)">(泣)</a>
+                      <a class="emoji-list emoji-text" data-emoji-text="(苦笑)">(苦笑)</a>
+                    </div>
+                    <div class="emoji-tabs">
+                      <div class="emoji-container">
+                        <div class="emoji-tab-wrap clearfix" style="width: 46px; left: 0px;">
+                          <a class="tab-link on" data-index="0">
+                            <img src="../image/emoji-tab-default.png">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 是否选择邮箱接收回复信息 -->
+                <label class="is-send-email">
+                  <input type="checkbox">
+                  <span>邮箱接收回复消息</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-md-4 column">
       </div>
     </div>
   </div>
 </body>
+<script>
+  $('#triggerEmoji').click(function (e) {
+
+  })
+</script>
 
 </html>
