@@ -326,18 +326,27 @@
 
             }
             .time {
-                i {
-                    display: inline-block;
-                    width: 14px;
-                    height: 14px;
-                    vertical-align: text-top;
-                    margin-right: 5px;
-                    background: url(../image/icons-comment.png) no-repeat;
-                    background-position: -153px -25px;
-                }
             }
             .like {
-
+                cursor: pointer;
+                &:hover {
+                    i {
+                        background: url(../image/like-hov.png) no-repeat;
+                    }
+                }
+                &.active {
+                    i {
+                        background: url(../image/liked.png) no-repeat;
+                    }
+                }
+                i {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: text-top;
+                    margin-right: 5px;
+                    background: url(../image/like.png) no-repeat;
+                }
             }
             .reply { // 回复
                 padding: 0 5px;
