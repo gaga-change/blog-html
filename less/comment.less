@@ -1,6 +1,83 @@
 // 评论样式
-// 评论组件
 @bg-color: #e5e9ef;
+// 评论头部
+.comment-header {
+    font: 12px 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+    margin: 0 0 24px;
+    border-bottom: 1px solid #e5e9ef;
+    .tabs-order {
+        float: left;
+        margin-bottom: -1px;
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            display: block;
+            background-color: transparent;
+            border-radius: 0;
+            border: 0;
+            padding: 8px 0;
+            margin-right: 16px;
+            border-bottom: 1px solid transparent;
+            position: relative;
+            float: left;
+            cursor: pointer;
+            line-height: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #222;
+            &.on {
+                border-bottom: 1px solid #00a1d6;
+                color: #00a1d6;
+                &:after {
+                    content: "";
+                    width: 12px;
+                    height: 6px;
+                    background: transparent url(../image/trigon.png) no-repeat;
+                    position: absolute;
+                    background-size: cover;
+                    bottom: 0;
+                    left: 50%;
+                    margin-left: -6px;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+    .header-page {
+        float: right;
+        line-height: 36px;
+        font-size: 12px;
+        .result {
+            padding-right: 10px;
+        }
+        .prev, .tcd-number, .current, .dian, .next {
+            color: #222;
+            cursor: pointer;
+            text-align: center;
+            margin: 0 4px;
+            text-decoration: none;
+            line-height: 26px;
+            &:hover {
+                color: #00a1d6;
+            }
+        }
+        .dian {
+            cursor: default;
+            &:hover {
+                color: #222;
+            }
+        }
+        .current {
+            color: #00a1d6;
+            font-weight: 700;
+        }
+    }
+}
+
+// 评论组件
 .page-comment {
     width: 100%;
     font: 12px 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
@@ -311,7 +388,8 @@
                 height: 24px;
                 border-radius: 50%;
             }
-            .username, .text {
+            .username,
+            .text {
                 display: inline;
             }
             .username {
@@ -326,13 +404,15 @@
             height: 48px;
             border-radius: 50%;
         }
-        .username {  // 用户名
+        .username {
+            // 用户名
             color: #6d757a;
             font-weight: 700;
             line-height: 18px;
             font-size: 12px;
         }
-        .text { // 评论内容
+        .text {
+            // 评论内容
             line-height: 20px;
             padding: 2px 0;
             font-size: 14px;
@@ -344,14 +424,11 @@
         .info {
             color: #99a2aa;
             line-height: 26px;
-            & > span {
+            &>span {
                 margin-right: 20px;
             }
-            .floor {
-
-            }
-            .time {
-            }
+            .floor {}
+            .time {}
             .like {
                 cursor: pointer;
                 &:hover {
@@ -373,7 +450,8 @@
                     background: url(../image/like.png) no-repeat;
                 }
             }
-            .reply { // 回复
+            .reply {
+                // 回复
                 padding: 0 5px;
                 border-radius: 4px;
                 margin-right: 15px;
