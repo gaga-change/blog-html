@@ -27,7 +27,8 @@
             border: 1px solid #00a1d6;
         }
     }
-    .next, .prev {
+    .next,
+    .prev {
         padding: 0 15px;
     }
     .dian {
@@ -451,8 +452,45 @@
         padding-top: 10px;
         padding-bottom: 10px;
         overflow: hidden;
+        .view-more {
+            font-size: 12px;
+            color: #6d757a;
+            .btn-more {
+                outline: none;
+                color: #00a1d6;
+                text-decoration: none;
+                cursor: pointer;
+                padding: 2px 3px;
+                border-radius: 4px;
+                &:hover {
+                    background: #e5e9ef;
+                    color: #00a1d6;
+                }
+            }
+        }
+        .paging-box {
+            .result {
+                padding-right: 10px;
+            }
+            .son {
+                color: #222;
+                cursor: pointer;
+                text-align: center;
+                margin: 0 4px;
+                text-decoration: none;
+                line-height: 26px;
+                &:hover {
+                    color: #00a1d6;
+                }
+            }
+            .current {
+                color: #00a1d6;
+                font-weight: 700;
+            }
+        }
         .con {
             border-bottom: 1px solid #e5e9ef;
+            padding-bottom: 14px;
         }
         &.fa {
             padding-top: 0;
