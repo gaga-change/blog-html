@@ -1,5 +1,70 @@
 // 评论样式
 @bg-color: #e5e9ef;
+// 评论底部
+.comment-footer {
+    margin: 20px 0;
+    font: 12px 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+    .son {
+        color: #222;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 4px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        background-image: none;
+        transition: all .2s;
+        font-size: 14px;
+        min-width: 15px;
+        margin: 0 2px;
+        padding: 0 10px;
+        display: inline-block;
+        height: 36px;
+        line-height: 36px;
+        text-decoration: none;
+        &:hover {
+            background: #00a1d6;
+            color: #fff;
+            border: 1px solid #00a1d6;
+        }
+    }
+    .next, .prev {
+        padding: 0 15px;
+    }
+    .dian {
+        cursor: default;
+        margin: 0 2px;
+        min-width: 15px;
+        padding: 10px;
+    }
+    .current {
+        background: #00a1d6;
+        color: #fff;
+        border: 1px solid #00a1d6;
+    }
+    .page-jump {
+        float: right;
+        color: #99a2aa;
+        line-height: 36px;
+        input {
+            margin: 0 5px;
+            padding: 0 10px;
+            height: 26px;
+            line-height: 24px;
+            margin-top: 7px;
+            font-size: 12px;
+            box-shadow: none;
+            width: 46px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            outline: none;
+            text-align: center;
+            &:focus {
+                border-color: #00a1d6;
+            }
+        }
+    }
+}
+
 // 评论头部
 .comment-header {
     font: 12px 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
@@ -53,7 +118,11 @@
         .result {
             padding-right: 10px;
         }
-        .prev, .tcd-number, .current, .dian, .next {
+        .prev,
+        .tcd-number,
+        .current,
+        .dian,
+        .next {
             color: #222;
             cursor: pointer;
             text-align: center;
