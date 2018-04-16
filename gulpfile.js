@@ -12,7 +12,7 @@ var dir = {
   bootstrapMain: ['./less/bootstrap/base.less'],
   less: ['./less/*.less'],
   lessMain: ['./less/main.less', './less/dashboard.less'],
-  output: './css'
+  output: './dist'
 }
 
 gulp.task('bootstrap', function () {
@@ -24,7 +24,7 @@ gulp.task('bootstrap', function () {
     // plugins: [autoprefix]
   }))
   .pipe(sourcemaps.write('./maps'))
-  .pipe(gulp.dest(dir.output))
+  .pipe(gulp.dest(dir.output + '/css'))
 })
 
 gulp.task('less', function () {
@@ -36,7 +36,7 @@ gulp.task('less', function () {
       // plugins: [autoprefix]
     }))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dir.output))
+    .pipe(gulp.dest(dir.output + '/css'))
 })
 
 gulp.task('watchBootstrap', ['bootstrap'], function() {

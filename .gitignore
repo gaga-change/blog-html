@@ -1,6 +1,6 @@
 .idea
 test*
-css
+dist
 node_modules
 hide.config.json
 .oss-cache-test
