@@ -1,6 +1,8 @@
 
 const logger = require('koa-logger')
 const router = require('koa-router')()
+const serve = require('koa-static')
+const mount = require('koa-mount')
 const koaBody = require('koa-body')
 const views = require('koa-views')
 const path = require('path')
@@ -23,6 +25,10 @@ const posts = []
 
 app.use(logger())
 
+app.use(serve(path.join(__dirname, '/dist')));
+app.use(mount('/image', serve(path.join(__dirname, '/image'))));
+app.use(mount('/js', serve(path.join(__dirname, '/js'))));
+
 app.use(render)
 
 app.use(koaBody())
@@ -39,6 +45,6 @@ router.get('/', async ctx => {
 app.use(router.routes())
 
 
-if (!module.parent) app.listen(3001, () => {
+app.listen(3001, () => {
 	console.log(3001)
 })
