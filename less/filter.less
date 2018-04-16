@@ -56,6 +56,32 @@
     }
 
   }
+  .tags {
+    ul {
+      li {
+        font-size: 12px;
+        float: left;
+        border: 1px dashed #DCDCDC;
+        margin: 8px 5px 0 0;
+        // color: #666;
+        white-space: nowrap;
+        font-family: Arial;
+        padding: 5px 10px;
+        @media (min-width: @screen-md-min) {
+          padding: 5px 15px;
+        }
+        &:hover {
+          border: 1px solid @active-color;
+          background-color: @active-color;
+          a {
+            color: #fff;
+            text-decoration: none;
+          }
+          .transition(all .3s ease)
+        }
+      }
+    }
+  }
   // 点击排行 推荐文章
   .blog {
     li {
