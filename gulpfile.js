@@ -1,52 +1,43 @@
 var gulp = require('gulp')
 var less = require('gulp-less')
-var path = require('path')
-// var LessAutoprefix = require('less-plugin-autoprefix')
-var sourcemaps = require('gulp-sourcemaps')
-var plumber = require('gulp-plumber')
-// var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] })
-var ossSync = require('gulp-oss-sync')
-var browserSync = require('browser-sync')
-var nodemon = require('gulp-nodemon')
+const path = require('path')
+const sourcemaps = require('gulp-sourcemaps')
+const plumber = require('gulp-plumber')
+const ossSync = require('gulp-oss-sync')
+const browserSync = require('browser-sync')
+const nodemon = require('gulp-nodemon')
+const gulpRename = require('gulp-rename')
+const rename = require('rename')
+const cleanCss = require('gulp-clean-css')
+const lessChanged = require('gulp-less-changed')
+const clean = require('gulp-clean')
 
-var dir = {
-  bootstrap: ['./less/bootstrap/**/*.less'],
-  bootstrapMain: ['./less/bootstrap/base.less'],
-  less: ['./less/*.less'],
-  lessMain: ['./less/main.less', './less/dashboard.less'],
-  output: './dist'
-}
+const OutputPath = 'dist'
+const MinifiedExtension = '.min.css'
 
-gulp.task('bootstrap', function () {
-  return gulp.src(dir.bootstrapMain)
+gulp.task('clean', function () {
+  return gulp.src(OutputPath, { read: false }).pipe(clean());
+})
+
+/**
+ * Less 样式转换 css
+ */
+gulp.task('css', () => {
+  return gulp.src('src/less/*.less')
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(less({
-      paths: [path.join(__dirname, 'less', 'includes')],
-      // plugins: [autoprefix]
+    .pipe(lessChanged({
+      getOutputFileName: file => rename(file, { dirname: OutputPath + '/css', extname: MinifiedExtension })
     }))
+    .pipe(less())
+    // .pipe(cleanCss())
+    .pipe(gulpRename({ extname: MinifiedExtension }))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dir.output + '/css'))
+    .pipe(gulp.dest(OutputPath + '/css'))
 })
 
-gulp.task('less', function () {
-  return gulp.src(dir.lessMain)
-    .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(less({
-      paths: [path.join(__dirname, 'less', 'includes')],
-      // plugins: [autoprefix]
-    }))
-    .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dir.output + '/css'))
-})
-
-gulp.task('watchBootstrap', ['bootstrap'], function () {
-  gulp.watch(dir.bootstrap, ['less'])
-})
-
-gulp.task('watch', ['bootstrap', 'less'], function () {
-  gulp.watch(dir.less, ['less'])
+gulp.task('watch', ['clean', 'css'], () => {
+  return gulp.watch('src/less/*.less', ['css'])
 })
 
 gulp.task('browser-sync', function () {
@@ -57,13 +48,6 @@ gulp.task('browser-sync', function () {
     port: 7000,
   })
 })
-
-// gulp.task('start', function () {
-//   nodemon({
-//     script: 'server.js',
-//     env: { 'NODE_ENV': 'development' }
-//   })
-// })
 
 /** 上传静态资源至阿里云oss */
 gulp.task('oss', function (cb) {

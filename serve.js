@@ -37,6 +37,8 @@ app.use(koaBody())
 
 router.get('/', async ctx => {
   await ctx.render('index', {})
+}).get('/comment', async ctx => {
+  await ctx.render('comment')
 })
   // .get('/post/new', add)
   // .get('/post/:id', show)

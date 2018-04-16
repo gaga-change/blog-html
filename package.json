@@ -20,8 +20,12 @@
   "dependencies": {
     "browser-sync": "^2.23.6",
     "ejs": "^2.5.8",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-less-changed": "^1.3.4",
     "gulp-nodemon": "^2.2.1",
     "gulp-oss-sync": "^1.0.4",
+    "gulp-rename": "^1.2.2",
     "jquery": "^3.2.1",
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
@@ -29,7 +33,8 @@
     "koa-mount": "^3.0.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
-    "koa-views": "^6.1.4"
+    "koa-views": "^6.1.4",
+    "rename": "^1.0.4"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
