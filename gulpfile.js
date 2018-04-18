@@ -15,6 +15,7 @@ const clean = require('gulp-clean')
 const ugLify = require('gulp-uglify')
 const imageMin = require('gulp-imagemin')
 const pngquant = require('imagemin-pngquant')
+const $ = require('gulp-load-plugins')()
 
 const OutputPath = 'dist'
 const MinifiedExtension = '.min.css'
@@ -57,7 +58,7 @@ gulp.task('image', function () {
       use: [pngquant()] // 使用pngquant插件进行深度压缩  
     }))
     .pipe(gulp.dest('dist/image'))
-    // .pipe(browserSync.reload({ stream: true }))
+  // .pipe(browserSync.reload({ stream: true }))
 })
 
 gulp.task('lib', () => {
@@ -65,22 +66,45 @@ gulp.task('lib', () => {
     .pipe(gulp.dest('dist/lib'))
 })
 
-gulp.task('browser-sync', function () {
+gulp.task('html', () => {
+  return gulp.src('src/page/**/*.html')
+    .pipe(gulp.dest('dist/html'))
+})
+
+gulp.task("node", function (cb) {
+  var called = false
+  nodemon({
+    script: './serve/app.js',
+    watch: 'serve',
+    env: {
+      'NODE_ENV': 'development'
+    }
+  }).on('start', function () {
+    if (!called) {
+      cb()
+      called = true
+    }
+  })
+});
+
+gulp.task('browser-sync', ['node'], function () {
   browserSync.init(null, {
-    proxy: "http://localhost:3001", // 注意这里要换成你在koa中设定的 服务端口一般是3000
-    files: ["dist/**/*.*"],
+    proxy: "http://localhost:3002", // 注意这里要换成你在koa中设定的 服务端口一般是3000
+    files: ['dist/css/*', 'dist/js/*'],
+    notify: false,
     browser: "chrome",
     port: 7000,
   })
 })
 
 gulp.task('default', ['clean'], () => {
-  return gulp.start(['css', 'script', 'lib'], () => {
+  return gulp.start(['css', 'script', 'lib', 'html', 'browser-sync'], () => {
     console.log('------------- -------------')
     gulp.watch('src/less/**/*.less', ['css'])
     gulp.watch('src/js/**/*.js', ['css'])
     gulp.watch('src/js/**/*', ['image'])
     gulp.watch('src/lib/**/*', ['lib'])
+    gulp.watch('src/page/**/*', ['html'])
   })
 })
 

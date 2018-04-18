@@ -7,10 +7,9 @@ const koaBody = require('koa-body')
 const views = require('koa-views')
 const path = require('path')
 
-// setup views mapping .html
-// to the swig template engine
+const distPath = path.resolve(__dirname, '../dist')
 
-const render = views(path.join(__dirname, './page'), {
+const render = views(path.resolve(distPath, './html'), {
   map: { html: 'ejs' }
 })
 
@@ -25,9 +24,8 @@ const posts = []
 
 app.use(logger())
 
-app.use(serve(path.join(__dirname, '/dist')));
-app.use(mount('/image', serve(path.join(__dirname, '/image'))));
-app.use(mount('/js', serve(path.join(__dirname, '/js'))));
+app.use(mount('/static', serve(distPath)))
+// app.use(mount('/js', serve(path.join(__dirname, '/js'))));
 
 app.use(render)
 
@@ -47,6 +45,6 @@ router.get('/', async ctx => {
 app.use(router.routes())
 
 
-app.listen(3001, () => {
-	console.log(3001)
+app.listen(3002, () => {
+	console.log(3002)
 })
