@@ -1,5 +1,5 @@
 /**
- * Created by yanjd on 2017/11/16.
+ * Created by yanjd on 2017/11/16.2
  */
 (function ($) {
   var page = window.page = {}

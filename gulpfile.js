@@ -10,13 +10,17 @@ const gulpRename = require('gulp-rename')
 const rename = require('rename')
 const cleanCss = require('gulp-clean-css')
 const lessChanged = require('gulp-less-changed')
+const changed = require('gulp-changed')
 const clean = require('gulp-clean')
+const ugLify = require('gulp-uglify')
+const imageMin = require('gulp-imagemin')
+const pngquant = require('imagemin-pngquant')
 
 const OutputPath = 'dist'
 const MinifiedExtension = '.min.css'
 
 gulp.task('clean', function () {
-  return gulp.src(OutputPath, { read: false }).pipe(clean());
+  return gulp.src(['dist/*', '!dist/image'], { read: false }).pipe(clean());
 })
 
 /**
@@ -30,14 +34,35 @@ gulp.task('css', () => {
       getOutputFileName: file => rename(file, { dirname: OutputPath + '/css', extname: MinifiedExtension })
     }))
     .pipe(less())
-    // .pipe(cleanCss())
+    .pipe(cleanCss())
     .pipe(gulpRename({ extname: MinifiedExtension }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(OutputPath + '/css'))
 })
 
-gulp.task('watch', ['clean', 'css'], () => {
-  return gulp.watch('src/less/*.less', ['css'])
+gulp.task('script', () => {
+  return gulp.src('src/js/*.js')
+    .pipe(changed('dist/js', { hasChanged: changed.compareSha1Digest }))
+    .pipe(ugLify())
+    .pipe(gulp.dest('dist/js'))
+})
+
+// 压缩图片  
+gulp.task('image', function () {
+  gulp.src('./src/image/*.*')
+    .pipe(changed('dist/image', { hasChanged: changed.compareSha1Digest }))
+    .pipe(imageMin({
+      progressive: true,// 无损压缩JPG图片  
+      svgoPlugins: [{ removeViewBox: false }], // 不移除svg的viewbox属性  
+      use: [pngquant()] // 使用pngquant插件进行深度压缩  
+    }))
+    .pipe(gulp.dest('dist/image'))
+    // .pipe(browserSync.reload({ stream: true }))
+})
+
+gulp.task('lib', () => {
+  return gulp.src('src/lib/**/*')
+    .pipe(gulp.dest('dist/lib'))
 })
 
 gulp.task('browser-sync', function () {
@@ -49,6 +74,19 @@ gulp.task('browser-sync', function () {
   })
 })
 
+gulp.task('default', ['clean'], () => {
+  return gulp.start(['css', 'script', 'lib'], () => {
+    console.log('------------- -------------')
+    gulp.watch('src/less/**/*.less', ['css'])
+    gulp.watch('src/js/**/*.js', ['css'])
+    gulp.watch('src/js/**/*', ['image'])
+    gulp.watch('src/lib/**/*', ['lib'])
+  })
+})
+
+gulp.task('build', () => {
+
+})
 /** 上传静态资源至阿里云oss */
 gulp.task('oss', function (cb) {
   if (!process.env.AccessKeySecret) {
