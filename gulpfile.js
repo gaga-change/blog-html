@@ -179,7 +179,7 @@ gulp.task('oss', function (cb) {
       }
     },
     setting: {
-      dir: "css", // root directory name 
+      dir: "test", // root directory name 
       noClean: false, // compare with the last cache file to decide if the file deletion is need 
       force: false, // ignore cache file and force re-upload all the files 
       quiet: true // quiet option for oss deleteMulti operation 
@@ -188,7 +188,7 @@ gulp.task('oss', function (cb) {
   const cacheConf = {
     cacheFileName: '.oss-cache-test' // the filename for the cache file 
   }
-  return gulp.src([dir.output + '/**/*.css', dir.output + '/**/*.map'])
+  return gulp.src(['build/**/*', '!build/html/**/*', '!build/rev/**/*'])
     .pipe(ossSync(ossConf, cacheConf));
 })
 
