@@ -1,6 +1,7 @@
 .idea
 test*
 dist
+build
 node_modules
 hide.config.json
 .oss-cache-test

@@ -15,13 +15,19 @@ const clean = require('gulp-clean')
 const ugLify = require('gulp-uglify')
 const imageMin = require('gulp-imagemin')
 const pngquant = require('imagemin-pngquant')
-const $ = require('gulp-load-plugins')()
+const rev = require('gulp-rev')
+const revCollector = require('gulp-rev-collector')
+const revDel = require('rev-del')
+const gulpSequence = require('gulp-sequence')
 
 const OutputPath = 'dist'
 const MinifiedExtension = '.min.css'
 
 gulp.task('clean', function () {
   return gulp.src(['dist/*', '!dist/image'], { read: false }).pipe(clean());
+})
+gulp.task('clean-build', function () {
+  return gulp.src(['build', 'dist'], { read: false }).pipe(clean());
 })
 
 /**
@@ -38,7 +44,10 @@ gulp.task('css', () => {
     .pipe(cleanCss())
     .pipe(gulpRename({ extname: MinifiedExtension }))
     .pipe(sourcemaps.write('./maps'))
+    // .pipe(rev())
     .pipe(gulp.dest(OutputPath + '/css'))
+  // .pipe(rev.manifest())
+  // .pipe(gulp.dest('dist/rev/css'))
 })
 
 gulp.task('script', () => {
@@ -98,18 +107,58 @@ gulp.task('browser-sync', ['node'], function () {
 })
 
 gulp.task('default', ['clean'], () => {
-  return gulp.start(['css', 'script', 'lib', 'html', 'browser-sync'], () => {
+  gulpSequence(['css', 'script', 'lib'], 'rev', 'browser-sync', () => {
     console.log('------------- -------------')
     gulp.watch('src/less/**/*.less', ['css'])
-    gulp.watch('src/js/**/*.js', ['css'])
+    gulp.watch('src/js/**/*.js', ['js'])
     gulp.watch('src/js/**/*', ['image'])
     gulp.watch('src/lib/**/*', ['lib'])
-    gulp.watch('src/page/**/*', ['html'])
+    gulp.watch('src/page/**/*', ['rev'])
   })
 })
 
-gulp.task('build', () => {
+gulp.task('css-hash', () => {
+  return gulp.src('dist/css/*.css')
+    .pipe(rev())
+    .pipe(gulp.dest('build/css'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('build/rev/css'))
+})
+gulp.task('js-hash', () => {
+  return gulp.src('dist/js/*.js')
+    .pipe(rev())
+    .pipe(gulp.dest('build/js'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('build/rev/js'))
+})
+gulp.task('build-maps', () => {
+  return gulp.src('dist/css/maps/*.map')
+    .pipe(gulp.dest('build/css/maps'))
+})
+gulp.task('build-image', () => {
+  return gulp.src('dist/image/*')
+    .pipe(gulp.dest('build/image'))
+})
+gulp.task('build-lib', () => {
+  return gulp.src('dist/lib/*')
+    .pipe(gulp.dest('build/lib'))
+})
 
+gulp.task('rev', function () {
+  return gulp.src(['build/rev/**/*.json', 'dist/html/*.html'])
+    .pipe(revCollector({
+      replaceReved: true,
+    }))
+    .pipe(gulp.dest('build/html'));
+})
+
+gulp.task('build', ['clean-build'], () => {
+  gulpSequence(['css', 'script', 'lib', 'image', 'html'],
+    ['css-hash', 'js-hash', 'build-maps', 'build-image', 'build-lib'],
+    'rev'
+    , (err) => {
+      if (err) console.log(err)
+    })
 })
 /** 上传静态资源至阿里云oss */
 gulp.task('oss', function (cb) {
