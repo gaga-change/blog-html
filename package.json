@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "serve"
+    "serve": "serve",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -18,22 +19,22 @@
   },
   "homepage": "https://github.com/gaga-change/blog-html#readme",
   "dependencies": {
-    "browser-sync": "^2.23.6",
-    "ejs": "^2.5.8",
+    "rename": "^1.0.4",
+    "rev-del": "^1.0.5",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "less-plugin-autoprefix": "^1.5.1",
     "gulp-changed": "^3.2.0",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^3.9.3",
-    "gulp-imagemin": "^4.1.0",
     "gulp-less-changed": "^1.3.4",
-    "gulp-nodemon": "^2.2.1",
-    "gulp-oss-sync": "^1.0.4",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^8.1.1",
     "gulp-rev-collector": "^1.3.1",
     "gulp-sequence": "^1.0.0",
     "gulp-uglify": "^3.0.0",
-    "imagemin-pngquant": "^5.1.0",
-    "jquery": "^3.2.1",
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
     "koa-logger": "^3.2.0",
@@ -41,16 +42,12 @@
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
     "koa-views": "^6.1.4",
-    "rename": "^1.0.4",
-    "rev-del": "^1.0.5"
+    "ejs": "^2.5.8"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "gulp": "^3.9.1",
-    "gulp-less": "^3.3.2",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sourcemaps": "^2.6.1",
-    "less-plugin-autoprefix": "^1.5.1"
+    "browser-sync": "^2.23.6",
+    "jquery": "^3.2.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-oss-sync": "^1.0.4"
   }
 }

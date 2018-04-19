@@ -3,9 +3,6 @@ var less = require('gulp-less')
 const path = require('path')
 const sourcemaps = require('gulp-sourcemaps')
 const plumber = require('gulp-plumber')
-const ossSync = require('gulp-oss-sync')
-const browserSync = require('browser-sync')
-const nodemon = require('gulp-nodemon')
 const gulpRename = require('gulp-rename')
 const rename = require('rename')
 const cleanCss = require('gulp-clean-css')
@@ -13,8 +10,8 @@ const lessChanged = require('gulp-less-changed')
 const changed = require('gulp-changed')
 const clean = require('gulp-clean')
 const ugLify = require('gulp-uglify')
-const imageMin = require('gulp-imagemin')
-const pngquant = require('imagemin-pngquant')
+// const imageMin = require('gulp-imagemin')
+// const pngquant = require('imagemin-pngquant')
 const rev = require('gulp-rev')
 const revCollector = require('gulp-rev-collector')
 const revDel = require('rev-del')
@@ -61,11 +58,11 @@ gulp.task('script', () => {
 gulp.task('image', function () {
   gulp.src('./src/image/*.*')
     .pipe(changed('dist/image', { hasChanged: changed.compareSha1Digest }))
-    .pipe(imageMin({
-      progressive: true,// 无损压缩JPG图片  
-      svgoPlugins: [{ removeViewBox: false }], // 不移除svg的viewbox属性  
-      use: [pngquant()] // 使用pngquant插件进行深度压缩  
-    }))
+    // .pipe(imageMin({
+    //   progressive: true,// 无损压缩JPG图片  
+    //   svgoPlugins: [{ removeViewBox: false }], // 不移除svg的viewbox属性  
+    //   use: [pngquant()] // 使用pngquant插件进行深度压缩  
+    // }))
     .pipe(gulp.dest('dist/image'))
   // .pipe(browserSync.reload({ stream: true }))
 })
@@ -81,6 +78,7 @@ gulp.task('html', () => {
 })
 
 gulp.task("node", function (cb) {
+  const nodemon = require('gulp-nodemon')
   var called = false
   nodemon({
     script: './serve/app.js',
@@ -97,23 +95,13 @@ gulp.task("node", function (cb) {
 });
 
 gulp.task('browser-sync', ['node'], function () {
+  const browserSync = require('browser-sync')
   browserSync.init(null, {
     proxy: "http://localhost:3002", // 注意这里要换成你在koa中设定的 服务端口一般是3000
     files: ['dist/css/*', 'dist/js/*'],
     notify: false,
     browser: "chrome",
     port: 7000,
-  })
-})
-
-gulp.task('default', ['clean'], () => {
-  gulpSequence(['css', 'script', 'lib'], 'rev', 'browser-sync', () => {
-    console.log('------------- -------------')
-    gulp.watch('src/less/**/*.less', ['css'])
-    gulp.watch('src/js/**/*.js', ['js'])
-    gulp.watch('src/js/**/*', ['image'])
-    gulp.watch('src/lib/**/*', ['lib'])
-    gulp.watch('src/page/**/*', ['rev'])
   })
 })
 
@@ -160,8 +148,21 @@ gulp.task('build', ['clean-build'], () => {
       if (err) console.log(err)
     })
 })
+
+gulp.task('default', ['clean'], () => {
+  gulpSequence(['css', 'script', 'lib', 'image', 'html'], 'rev', 'browser-sync', () => {
+    console.log('------------- -------------')
+    gulp.watch('src/less/**/*.less', ['css'])
+    gulp.watch('src/js/**/*.js', ['js'])
+    gulp.watch('src/js/**/*', ['image'])
+    gulp.watch('src/lib/**/*', ['lib'])
+    gulp.watch('src/page/**/*', ['rev'])
+  })
+})
+
 /** 上传静态资源至阿里云oss */
 gulp.task('oss', function (cb) {
+  const ossSync = require('gulp-oss-sync')
   if (!process.env.AccessKeySecret) {
     console.error('process.env.AccessKeySecret 未配置')
     return

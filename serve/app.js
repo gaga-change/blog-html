@@ -7,7 +7,7 @@ const koaBody = require('koa-body')
 const views = require('koa-views')
 const path = require('path')
 
-const distPath = path.resolve(__dirname, '../dist')
+const distPath = path.resolve(__dirname, '../', process.env.BUILD_PATH || 'dist')
 
 const render = views(path.resolve(distPath, './html'), {
   map: { html: 'ejs' }
@@ -44,7 +44,7 @@ router.get('/', async ctx => {
 
 app.use(router.routes())
 
-
-app.listen(3002, () => {
-	console.log(3002)
+const port = process.env.PORT || 3002
+app.listen(port, () => {
+	console.log(port)
 })
