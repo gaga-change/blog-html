@@ -81,7 +81,7 @@ gulp.task("node", function (cb) {
   const nodemon = require('gulp-nodemon')
   var called = false
   nodemon({
-    script: './serve/app.js',
+    script: './serve/index.js',
     watch: 'serve',
     env: {
       'NODE_ENV': 'development'
@@ -101,7 +101,7 @@ gulp.task('browser-sync', ['node'], function () {
     files: ['dist/css/*', 'dist/js/*'],
     notify: false,
     browser: "chrome",
-    port: 7000,
+    port: 8081,
   })
 })
 
