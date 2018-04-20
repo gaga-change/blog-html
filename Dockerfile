@@ -8,4 +8,4 @@ RUN npm install --production --silent && mv node_modules ../
 COPY . .
 RUN gulp build
 EXPOSE 3000
-CMD node serve/index.js
+CMD node ./render/index.js
