@@ -150,13 +150,13 @@ gulp.task('build', ['clean-build'], () => {
 })
 
 gulp.task('default', ['clean'], () => {
-  gulpSequence(['css', 'script', 'lib', 'image', 'html'], 'rev', 'browser-sync', () => {
+  gulpSequence(['css', 'script', 'lib', 'image', 'html'], 'browser-sync', () => {
     console.log('------------- -------------')
     gulp.watch('src/less/**/*.less', ['css'])
     gulp.watch('src/js/**/*.js', ['script'])
-    gulp.watch('src/js/**/*', ['image'])
+    gulp.watch('src/iamge/**/*', ['image'])
     gulp.watch('src/lib/**/*', ['lib'])
-    gulp.watch('src/page/**/*', ['rev'])
+    gulp.watch('src/page/**/*', ['html'])
   })
 })
 
