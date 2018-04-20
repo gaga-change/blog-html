@@ -8,10 +8,9 @@ const router = require('./router')
 const views = require('./render')
 const logger = require('morgan')
 
-const app = express()
-const distPath = path.resolve(__dirname, '../', process.env.BUILD_PATH || 'dist')
+const app = module.exports = express()
 
-app.use(logger('dev'));
+if (!module.parent) app.use(logger('dev'))
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cookieParser())
@@ -33,11 +32,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
-views(app, distPath)
 // api 请求
 app.use('/api', router)
-// 静态资源
-app.use('/static', express.static(distPath))
+
 // 404 处理
 app.use((req, res, next) => {
     let err = new Error('Not Found')
@@ -51,4 +48,4 @@ app.use((err, req, res, next) => {
 })
 
 const port = process.env.PORT || 3002
-app.listen(port, () => console.log(port))
+if (!module.parent) app.listen(port, () => console.log(port))

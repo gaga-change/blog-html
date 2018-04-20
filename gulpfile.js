@@ -21,10 +21,10 @@ const OutputPath = 'dist'
 const MinifiedExtension = '.min.css'
 
 gulp.task('clean', function () {
-  return gulp.src(['dist/*', '!dist/image'], { read: false }).pipe(clean());
+  return gulp.src(['dist/*', '!dist/image'], { read: false }).pipe(clean())
 })
 gulp.task('clean-build', function () {
-  return gulp.src(['build', 'dist'], { read: false }).pipe(clean());
+  return gulp.src(['build', 'dist'], { read: false }).pipe(clean())
 })
 
 /**
@@ -81,8 +81,8 @@ gulp.task("node", function (cb) {
   const nodemon = require('gulp-nodemon')
   var called = false
   nodemon({
-    script: './serve/index.js',
-    watch: 'serve',
+    script: './render/index.js',
+    watch: ['serve', 'render'],
     env: {
       'NODE_ENV': 'development'
     }
@@ -92,7 +92,7 @@ gulp.task("node", function (cb) {
       called = true
     }
   })
-});
+})
 
 gulp.task('browser-sync', ['node'], function () {
   const browserSync = require('browser-sync')
@@ -137,7 +137,7 @@ gulp.task('rev', function () {
     .pipe(revCollector({
       replaceReved: true,
     }))
-    .pipe(gulp.dest('build/html'));
+    .pipe(gulp.dest('build/html'))
 })
 
 gulp.task('build', ['clean-build'], () => {
@@ -153,7 +153,7 @@ gulp.task('default', ['clean'], () => {
   gulpSequence(['css', 'script', 'lib', 'image', 'html'], 'rev', 'browser-sync', () => {
     console.log('------------- -------------')
     gulp.watch('src/less/**/*.less', ['css'])
-    gulp.watch('src/js/**/*.js', ['js'])
+    gulp.watch('src/js/**/*.js', ['script'])
     gulp.watch('src/js/**/*', ['image'])
     gulp.watch('src/lib/**/*', ['lib'])
     gulp.watch('src/page/**/*', ['rev'])
@@ -190,6 +190,6 @@ gulp.task('oss', function (cb) {
     cacheFileName: '.oss-cache-test' // the filename for the cache file 
   }
   return gulp.src(['build/**/*', '!build/html/**/*', '!build/rev/**/*'])
-    .pipe(ossSync(ossConf, cacheConf));
+    .pipe(ossSync(ossConf, cacheConf))
 })
 
