@@ -4,11 +4,14 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const path = require('path')
 const SessionStore = require('express-mysql-session')(session)
+const router = require('./router')
+const views = require('./render')
+const logger = require('morgan')
 
 const app = express()
+const distPath = path.resolve(__dirname, '../', process.env.BUILD_PATH || 'dist')
 
-const router = require('./router.js')
-
+app.use(logger('dev'));
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cookieParser())
@@ -30,16 +33,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
-// 日志
-app.use((req, res, next) => {
-    console.log('%s %s %s', req.method, req.url, req.path)
-    req.session.path = req.path 
-    next()
-})
+views(app, distPath)
 // api 请求
 app.use('/api', router)
 // 静态资源
-const distPath = path.resolve(__dirname, '../', process.env.BUILD_PATH || 'dist')
 app.use('/static', express.static(distPath))
 // 404 处理
 app.use((req, res, next) => {
