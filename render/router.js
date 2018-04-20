@@ -6,8 +6,7 @@ router.get('/', (req, res) => {
     res.render('index')
 })
 router.get('/login', async (req, res) => {
-    let data = await api.userInfo()
-    console.log(data)
+    let data = await api.userInfo(req.headers)
     res.render('login', {data})
 })
 

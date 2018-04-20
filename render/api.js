@@ -1,4 +1,11 @@
 const axios = require('axios')
 
 const dir = 'http://localhost:8081'
-exports.userInfo = () => axios.get(dir + '/api/user/session').then(res => res.data)
+// req.headers
+exports.userInfo = (headers) => {
+    return axios({
+        methods: 'get',
+        url: dir + '/api/user/session',
+        headers: headers
+    }).then(res => res.data)
+}

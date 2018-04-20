@@ -5,7 +5,6 @@ const session = require('express-session')
 const path = require('path')
 const SessionStore = require('express-mysql-session')(session)
 const router = require('./router')
-const views = require('./render')
 const logger = require('morgan')
 
 const app = module.exports = express()
@@ -13,7 +12,7 @@ const app = module.exports = express()
 if (!module.parent) app.use(logger('dev'))
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cookieParser())
+if (!module.parent) app.use(cookieParser())
 const options = {
     host: 'localhost',
     port: 3306,
@@ -43,8 +42,9 @@ app.use((req, res, next) => {
 })
 // 异常处理
 app.use((err, req, res, next) => {
-    res.status(err.status || 500)
-    res.send({ err: err.message, error: err})
+    if (typeof err !== 'string')
+        res.status(err.status || 500)
+    res.send({ err: err.message, error: err })
 })
 
 const port = process.env.PORT || 3002

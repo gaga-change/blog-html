@@ -12,6 +12,7 @@
         <input type="text" id="username" placeholder="username">
         <input type="text" id="password" placeholder="password">
         <button id="login">login</button>
+        <button id="logout">logout</button>
         <button id="getUser">userInfo</button>
     </div>
     <p id="userInfo"></p>
@@ -21,6 +22,11 @@
 var data = <%-JSON.stringify(data)%>
 var username = $('#username')
 var password = $('#password')
+
+$.get('/api/user/session')
+$('#logout').click(e => {
+    $.get('/api/user/logout')
+})
 $('#login').click(e => {
     console.log(username, password)
     if (username && password) {
