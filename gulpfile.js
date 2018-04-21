@@ -21,16 +21,15 @@ const notify = require('gulp-notify')
 const OutputPath = 'dist'
 const MinifiedExtension = '.min.css'
 
+// 清空 idst 目录
 gulp.task('clean', function () {
   return gulp.src(['dist/*', '!dist/image'], { read: false }).pipe(clean())
 })
+// 清空 build&dist 目录
 gulp.task('clean-build', function () {
   return gulp.src(['build', 'dist'], { read: false }).pipe(clean())
 })
-
-/**
- * Less 样式转换 css
- */
+// Less 样式转换 css
 gulp.task('css', () => {
   return gulp.src('src/less/*.less')
     .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
@@ -43,14 +42,15 @@ gulp.task('css', () => {
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(OutputPath + '/css'))
 })
-
+// watch css
 gulp.task('watch-css', ['css'], () => {
   gulp.watch('src/less/**/*.less', ['css'])
 })
+// watch js
 gulp.task('watch-js', ['script'], () => {
   gulp.watch('src/js/**/*.js', ['script'])
 })
-
+// javescript 
 gulp.task('script', () => {
   return gulp.src('src/js/**/*.js')
     .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
@@ -58,8 +58,7 @@ gulp.task('script', () => {
     .pipe(ugLify())
     .pipe(gulp.dest('dist/js'))
 })
-
-// 压缩图片  
+// 图片处理
 gulp.task('image', function () {
   return gulp.src('./src/image/*.*')
     .pipe(changed('dist/image', { hasChanged: changed.compareSha1Digest }))
@@ -71,7 +70,7 @@ gulp.task('image', function () {
     .pipe(gulp.dest('dist/image'))
   // .pipe(browserSync.reload({ stream: true }))
 })
-
+// 资源目录
 gulp.task('lib', () => {
   return gulp.src('src/lib/**/*')
     .pipe(gulp.dest('dist/lib'))
@@ -134,7 +133,7 @@ gulp.task('build-image', () => {
     .pipe(gulp.dest('build/image'))
 })
 gulp.task('build-lib', () => {
-  return gulp.src('dist/lib/*')
+  return gulp.src('dist/lib/**/*')
     .pipe(gulp.dest('build/lib'))
 })
 
