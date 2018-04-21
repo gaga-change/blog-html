@@ -16,6 +16,7 @@ const rev = require('gulp-rev')
 const revCollector = require('gulp-rev-collector')
 const revDel = require('rev-del')
 const gulpSequence = require('gulp-sequence')
+const notify = require('gulp-notify')
 
 const OutputPath = 'dist'
 const MinifiedExtension = '.min.css'
@@ -32,7 +33,7 @@ gulp.task('clean-build', function () {
  */
 gulp.task('css', () => {
   return gulp.src('src/less/*.less')
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(sourcemaps.init())
     // .pipe(lessChanged({
     //   getOutputFileName: file => rename(file, { dirname: OutputPath + '/css', extname: MinifiedExtension })
@@ -41,6 +42,10 @@ gulp.task('css', () => {
     // .pipe(cleanCss())
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(OutputPath + '/css'))
+})
+
+gulp.task('watch-css', ['css'], () => {
+  gulp.watch('src/less/**/*.less', ['css'])
 })
 
 gulp.task('script', () => {
