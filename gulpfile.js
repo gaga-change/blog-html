@@ -56,7 +56,7 @@ gulp.task('script', () => {
 
 // 压缩图片  
 gulp.task('image', function () {
-  gulp.src('./src/image/*.*')
+  return gulp.src('./src/image/*.*')
     .pipe(changed('dist/image', { hasChanged: changed.compareSha1Digest }))
     // .pipe(imageMin({
     //   progressive: true,// 无损压缩JPG图片  
@@ -124,7 +124,7 @@ gulp.task('build-maps', () => {
     .pipe(gulp.dest('build/css/maps'))
 })
 gulp.task('build-image', () => {
-  return gulp.src('dist/image/*')
+  return gulp.src('dist/image/**/*')
     .pipe(gulp.dest('build/image'))
 })
 gulp.task('build-lib', () => {
