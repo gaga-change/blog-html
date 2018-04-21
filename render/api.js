@@ -1,6 +1,7 @@
 const axios = require('axios')
+const config = require('./config')
 
-const dir = 'http://localhost:8081'
+const dir = config.BLOG_MY_HOST
 // req.headers
 exports.userInfo = (headers) => {
     return axios({
