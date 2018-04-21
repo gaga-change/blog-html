@@ -39,13 +39,12 @@ gulp.task('css', () => {
     // }))
     .pipe(less())
     // .pipe(cleanCss())
-    // .pipe(gulpRename({ extname: MinifiedExtension }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(OutputPath + '/css'))
 })
 
 gulp.task('script', () => {
-  return gulp.src('src/js/*.js')
+  return gulp.src('src/js/**/*.js')
     .pipe(changed('dist/js', { hasChanged: changed.compareSha1Digest }))
     .pipe(ugLify())
     .pipe(gulp.dest('dist/js'))
@@ -105,7 +104,6 @@ gulp.task('browser-sync', ['node'], function () {
 gulp.task('css-hash', () => {
   return gulp.src('dist/css/*.css')
     .pipe(cleanCss())
-    .pipe(gulpRename({ extname: MinifiedExtension }))
     .pipe(rev())
     .pipe(gulp.dest('build/css'))
     .pipe(rev.manifest())

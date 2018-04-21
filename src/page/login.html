@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/static/css/base.min.css">
-    <title>登入测试</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <title>登入</title>
 </head>
+
 <body>
-    <div>
-        <input type="text" id="username" placeholder="username">
-        <input type="text" id="password" placeholder="password">
-        <button id="login">login</button>
-        <button id="logout">logout</button>
-        <button id="getUser">userInfo</button>
+    <div class="page-login center-block">
+        <h2 class="title">
+            <img  class="img-circle" src="/static/image/default.jpg" alt="">
+        </h2>
+        <div class="from">
+            <input class="username" type="text" title="username" id="username" placeholder="用户名">
+            <input class="password" type="password" title="password" id="password" placeholder="密码">
+        </div>
+        <button class="center-block" type="button">登入</button>
     </div>
-    <p id="userInfo"></p>
 </body>
 <script src="/static/lib/jquery.js"></script>
 <script>
-var data = <%-JSON.stringify(data)%>
+    var data = <% -JSON.stringify(data) %>
 var username = $('#username')
-var password = $('#password')
+    var password = $('#password')
 
-$.get('/api/user/session')
-$('#logout').click(e => {
-    $.get('/api/user/logout')
-})
-$('#login').click(e => {
-    console.log(username, password)
-    if (username && password) {
-        $.post('/api/user/login', {usernameOrEmail: username.val(), password: password.val()}).then(res => {
-            console.log(res)
-        })
-    } else {
-        alert('参数不能为空')
-    }
-    username.val('')
-    password.val('')
-})
+    $.get('/api/user/session')
+    $('#logout').click(e => {
+        $.get('/api/user/logout')
+    })
+    $('#login').click(e => {
+        console.log(username, password)
+        if (username && password) {
+            $.post('/api/user/login', { usernameOrEmail: username.val(), password: password.val() }).then(res => {
+                console.log(res)
+            })
+        } else {
+            alert('参数不能为空')
+        }
+        username.val('')
+        password.val('')
+    })
 </script>
+
 </html>
