@@ -34,17 +34,14 @@ gulp.task('css', () => {
   return gulp.src('src/less/*.less')
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(lessChanged({
-      getOutputFileName: file => rename(file, { dirname: OutputPath + '/css', extname: MinifiedExtension })
-    }))
+    // .pipe(lessChanged({
+    //   getOutputFileName: file => rename(file, { dirname: OutputPath + '/css', extname: MinifiedExtension })
+    // }))
     .pipe(less())
-    .pipe(cleanCss())
-    .pipe(gulpRename({ extname: MinifiedExtension }))
+    // .pipe(cleanCss())
+    // .pipe(gulpRename({ extname: MinifiedExtension }))
     .pipe(sourcemaps.write('./maps'))
-    // .pipe(rev())
     .pipe(gulp.dest(OutputPath + '/css'))
-  // .pipe(rev.manifest())
-  // .pipe(gulp.dest('dist/rev/css'))
 })
 
 gulp.task('script', () => {
@@ -107,6 +104,8 @@ gulp.task('browser-sync', ['node'], function () {
 
 gulp.task('css-hash', () => {
   return gulp.src('dist/css/*.css')
+    .pipe(cleanCss())
+    .pipe(gulpRename({ extname: MinifiedExtension }))
     .pipe(rev())
     .pipe(gulp.dest('build/css'))
     .pipe(rev.manifest())
