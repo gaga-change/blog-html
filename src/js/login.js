@@ -14,7 +14,9 @@ $(function () {
             return
         } else {
             $.post('/api/user/login', {
-                usernameOrEmail: username.val(), password: password.val()
+                usernameOrEmail: username.val(), 
+                password: password.val(),
+                remembe: $('#rememberMe')[0].checked
             }).then(function (res) {
                 console.log(res)
                 if (res.error) {

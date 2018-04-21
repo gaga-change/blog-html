@@ -42,6 +42,7 @@ exports.getUser = (req, res, next) => {
 /** 登入 */
 exports.login = async (req, res, next) => {
     try {
+        console.log(req.body.remembe == 'true')
         let usernameOrEmail = req.body.usernameOrEmail
         User.prototype.checkNull(usernameOrEmail, req.body.password)
         let rows = await DataUser.findUserForUsernameOrEmail(usernameOrEmail, usernameOrEmail)
@@ -49,6 +50,9 @@ exports.login = async (req, res, next) => {
             throw error.loginFail
         // 密码校验
         if (User.prototype.encryptPassword(req.body.password, rows[0].salt) == rows[0].hashed_password) { // 密码正确
+            if (req.body.remembe == 'true') {
+                req.session.cookie.maxAge = 14 * 24 * 60 * 60 * 1000
+            }
             req.session.user = rows[0]
             res.send({ data: rows[0] })
         } else { // 密码错误
