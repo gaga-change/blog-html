@@ -33,7 +33,7 @@ gulp.task('clean-build', function () {
  */
 gulp.task('css', () => {
   return gulp.src('src/less/*.less')
-    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
     .pipe(sourcemaps.init())
     // .pipe(lessChanged({
     //   getOutputFileName: file => rename(file, { dirname: OutputPath + '/css', extname: MinifiedExtension })
@@ -53,6 +53,7 @@ gulp.task('watch-js', ['script'], () => {
 
 gulp.task('script', () => {
   return gulp.src('src/js/**/*.js')
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
     .pipe(changed('dist/js', { hasChanged: changed.compareSha1Digest }))
     .pipe(ugLify())
     .pipe(gulp.dest('dist/js'))
