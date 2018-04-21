@@ -5,12 +5,14 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const router = require('./router')
 const serve = require('../serve')
+const compression = require('compression')
 const app = express()
 const distPath = path.resolve(__dirname, '../', process.env.BUILD_PATH || 'dist')
 
 
 app.use(logger('dev'))
 app.use(cookieParser())
+app.use(compression()) // gzip 压缩
 // 静态资源
 app.use('/static', express.static(distPath))
 // ejs模板引擎设定
