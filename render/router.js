@@ -7,8 +7,12 @@ router.get('/', (req, res) => {
 })
 // 登入页
 router.get('/login', async (req, res) => {
-    let data = await api.userInfo(req.headers)
-    res.render('login', {data})
+    let ret = await api.userInfo(req.headers)
+    if (ret.data) {
+        res.redirect('dashboard')
+    } else {
+        res.render('login')
+    }
 })
 // 后台管理
 router.get('/dashboard', async (req, res) => {

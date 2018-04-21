@@ -47,6 +47,9 @@ gulp.task('css', () => {
 gulp.task('watch-css', ['css'], () => {
   gulp.watch('src/less/**/*.less', ['css'])
 })
+gulp.task('watch-js', ['script'], () => {
+  gulp.watch('src/js/**/*.js', ['script'])
+})
 
 gulp.task('script', () => {
   return gulp.src('src/js/**/*.js')

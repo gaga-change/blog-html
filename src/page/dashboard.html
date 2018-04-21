@@ -7,6 +7,13 @@
     <title>后台管理</title>
 </head>
 <body>
-    123
+    <button onclick="logout()">退出</button>
 </body>
+<script src="/static/lib/js/jquery.min.js"></script>
+<script>
+    function logout() {
+        $.get('/api/user/logout')
+        location.href = '/login'
+    }
+</script>
 </html>
