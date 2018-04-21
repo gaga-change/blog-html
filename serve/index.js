@@ -4,8 +4,9 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const path = require('path')
 const SessionStore = require('express-mysql-session')(session)
-const router = require('./router')
 const logger = require('morgan')
+const router = require('./router')
+const config = require('./config')
 
 const app = module.exports = express()
 
@@ -14,11 +15,11 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 if (!module.parent) app.use(cookieParser())
 const options = {
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: '123456',
-    database: 'blog'
+    host: config.MYSQL_HOST,
+    port: config.MYSQL_PORT,
+    user: config.MYSQL_USER,
+    password: config.MYSQL_PASSWORD,
+    database: config.MYSQL_DATABASE
 }
 app.use(session({
     secret: '123456',
