@@ -12,7 +12,9 @@ router.get('/login', async (req, res) => {
     if (ret.data) {
         res.redirect('dashboard')
     } else {
-        res.render('login')
+        res.render('login', {
+            head: seo.login
+        })
     }
 })
 // 后台管理
