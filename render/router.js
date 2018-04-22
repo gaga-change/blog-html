@@ -1,5 +1,6 @@
 const express = require('express')
 const api = require('./api')
+const seo = require('./seo')
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -18,7 +19,9 @@ router.get('/login', async (req, res) => {
 router.get('/dashboard', async (req, res) => {
     let ret = await api.userInfo(req.headers)
     if (ret.data) {
-        res.render('dashboard')
+        res.render('dashboard', {
+            head: seo.dashboard
+        })
     } else {
         res.redirect('/login')
     }
