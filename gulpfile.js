@@ -138,7 +138,7 @@ gulp.task('build-lib', () => {
 })
 
 gulp.task('rev', function () {
-  return gulp.src(['build/rev/**/*.json', 'dist/html/*.html'])
+  return gulp.src(['build/rev/**/*.json', 'dist/html/**/*.html'])
     .pipe(revCollector({
       replaceReved: true,
     }))
