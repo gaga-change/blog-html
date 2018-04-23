@@ -3,6 +3,15 @@ const api = require('./api')
 const seo = require('./seo')
 const router = express.Router()
 
+const admin = async (req, res, next) => {
+    let ret = await api.userInfo(req.headers)
+    if (ret.data) {
+        next()
+    } else {
+        res.redirect('/login')
+    }
+}
+
 router.get('/', (req, res) => {
     res.render('index', {
         head: seo.home
@@ -19,16 +28,17 @@ router.get('/login', async (req, res) => {
         })
     }
 })
-// 后台管理
-router.get('/dashboard', async (req, res) => {
-    let ret = await api.userInfo(req.headers)
-    if (ret.data) {
-        res.render('dashboard', {
-            head: seo.dashboard
-        })
-    } else {
-        res.redirect('/login')
-    }
-})
 
+// 后台管理
+router.get('/dashboard', admin, async (req, res) => {
+    res.render('dashboard', {
+        head: seo.dashboard
+    })
+})
+// 后台管理
+router.get('/post-new', admin, async (req, res) => {
+    res.render('post-new', {
+        head: seo.postNew
+    })
+})
 module.exports = router

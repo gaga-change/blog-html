@@ -1,24 +1,24 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-    <div class="sidebar-sticky" style="height: calc(100vh - 48px)">
+    <div class="sidebar-sticky" style="height: calc(100vh - 48px)" id="MenuLeft">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link <%if(url=='dashboard'){%>active<%}%>" href="/dashboard">
                     仪表盘
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link <%if(url=='post-new'){%>active<%}%>" href="/post-new">
                     写文章
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link <%if(url=='test'){%>active<%}%>" href="#">
                     所有文章
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link <%if(url=='test'){%>active<%}%>" href="#">
                     分类目录
                 </a>
             </li>

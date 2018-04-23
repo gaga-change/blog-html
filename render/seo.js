@@ -7,5 +7,8 @@ module.exports = {
     },
     login: {
         title: '登入'
+    },
+    postNew: {
+        title: '撰写新文章'
     }
 }
