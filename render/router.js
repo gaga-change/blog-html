@@ -41,4 +41,10 @@ router.get('/post-new', admin, async (req, res) => {
         head: seo.postNew
     })
 })
+
+// 上传图片测试
+router.get('/upload', async (req, res) => {
+    res.render('upload')
+})
+
 module.exports = router
