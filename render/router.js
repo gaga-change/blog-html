@@ -4,7 +4,9 @@ const seo = require('./seo')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        head: seo.home
+    })
 })
 // 登入页
 router.get('/login', async (req, res) => {
