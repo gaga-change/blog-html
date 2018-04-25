@@ -13,5 +13,8 @@ module.exports = {
     },
     postAll: {
         title: '所有文章'
+    },
+    postEdit: {
+        title: '编辑文章'
     }
 }

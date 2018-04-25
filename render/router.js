@@ -53,6 +53,12 @@ router.get('/post-all', admin, async (req, res) => {
         res.send(ret)
     }
 })
+// 编辑文章
+router.get('/post-edit', admin, async (req, res) => {
+    res.render('post-edit', {
+        head: seo.postEdit
+    })
+})
 // 上传图片测试
 router.get('/upload', async (req, res) => {
     res.render('upload')
