@@ -10,5 +10,8 @@ module.exports = {
     },
     postNew: {
         title: '撰写新文章'
+    },
+    postAll: {
+        title: '所有文章'
     }
 }
