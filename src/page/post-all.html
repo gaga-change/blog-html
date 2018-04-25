@@ -29,14 +29,35 @@
                 </thead>
                 <tbody>
                   <% data.rows.forEach(item=>{ %>
+                  <%
+                    let d = new Date(item.modify_time)
+                    let showDate = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate()
+                  %>
                   <tr>
                     <td>#</td>
-                    <td><%= item.title %></td>
+                    <td><%= item.title %>
+                      <%if(item.private){%>
+                        （私密）
+                      <%}%>
+                      <div class="row-actions d-none">
+                        <span class="edit">
+                          <a href="http://www.junn.top/wp-admin/post.php?post=118&amp;action=edit">编辑</a>
+                        </span>
+                      </div>
+                    </td>
                     <td><%= item.display_name %></td>
                     <td><%= item.classify_name %></td>
                     <td><%= item.tags || '—' %></td>
                     <td><%= item.comment_num %></td>
-                    <td><%= item.modify_time %></td>
+                    <td>
+                      <%if(item.private){%>
+                        最后修改
+                      <%} else {%>
+                        已发布
+                      <%}%>
+                      <br>
+                      <%= showDate %>
+                    </td>
                   </tr>
                   <%})%>
                 </tbody>
