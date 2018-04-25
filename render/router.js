@@ -43,9 +43,15 @@ router.get('/post-new', admin, async (req, res) => {
 })
 // 所有文章
 router.get('/post-all', admin, async (req, res) => {
-    res.render('post-all', {
-        head: seo.postAll
-    })
+    let ret = await api.articles(req)
+    if (ret.data) {
+        res.render('post-all', {
+            head: seo.postAll,
+            data: ret.data
+        })
+    } else {
+        res.send(ret)
+    }
 })
 // 上传图片测试
 router.get('/upload', async (req, res) => {

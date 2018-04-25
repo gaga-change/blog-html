@@ -11,3 +11,11 @@ exports.userInfo = (req) => {
         headers: req.headers
     }).then(res => res.data)
 }
+/** 所有文章 */
+exports.articles = (req, params) => {
+    return axios({
+        methods: 'post',
+        url: dir + '/api/article',
+        headers: req.headers
+    }).then(res => res.data)
+}
